@@ -1,0 +1,282 @@
+/* ==========================================================
+   Hush Modern Restaurant — Landing page
+   ========================================================== */
+
+:root {
+  /* Cores */
+  --accent: #E8401C;        /* laranja-avermelhado (botões, destaques) */
+  --accent-text: #C7300D;   /* acento para texto sobre branco (contraste AA) */
+  --accent-soft: #FFEDE6;   /* fundo de ícones/badges */
+  --eyebrow: #FF7A52;       /* rótulos sobre fundo escuro */
+  --dark: #121212;          /* fundo das seções escuras (bate com as fotos) */
+  --darker: #0B0B0C;        /* topbar e rodapé */
+  --ink: #16171A;           /* texto principal */
+  --muted: #5E6066;         /* texto secundário sobre branco */
+  --muted-dark: #C9CBD0;    /* texto secundário sobre escuro */
+  --line: #D6D5D1;
+  --line-soft: #EEEDEA;
+  --white: #FFFFFF;
+
+  /* Tipografia */
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+
+  /* Sombras */
+  --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.12);
+  --shadow-photo: 0 18px 40px rgba(0, 0, 0, 0.18);
+
+  --radius: 16px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: hidden; /* o prato do hero passa da largura em telas pequenas */
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: #E03A12; }
+input, button { font: inherit; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 { font-family: var(--font-display); margin: 0; }
+
+.eyebrow {
+  color: var(--eyebrow);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  border: 0;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--accent); color: var(--white); }
+.btn--primary:hover { color: var(--white); background: #D23512; }
+.btn--ghost { border: 1.5px solid #4A4C52; color: var(--white); }
+.btn--ghost:hover { color: var(--white); border-color: var(--white); }
+.btn--outline { border: 1.5px solid var(--line); color: var(--ink); background: transparent; }
+.btn--sm { min-height: 44px; padding: 12px 22px; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* ---------- Topbar ---------- */
+.topbar { background: var(--darker); color: #A9ABB0; font-size: 13px; }
+.topbar__inner {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+  gap: 8px 24px; padding-top: 10px; padding-bottom: 10px;
+}
+.topbar__links { display: flex; flex-wrap: wrap; gap: 20px; }
+.topbar a { color: #A9ABB0; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  z-index: 2;              /* fica por cima da seção seguinte → o prato "vaza" */
+  background: var(--dark);
+  color: var(--white);
+}
+.hero__inner { position: relative; z-index: 2; }
+
+.nav {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 22px 0;
+}
+.logo { display: flex; align-items: center; gap: 10px; color: var(--white); }
+.logo__mark {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo__mark span { width: 12px; height: 12px; border-radius: 50%; background: var(--white); }
+.logo__text { font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -0.5px; color: var(--white); }
+.nav__links { display: flex; flex-wrap: wrap; gap: 4px 28px; font-size: 15px; font-weight: 600; }
+.nav__links a { color: var(--muted-dark); }
+.nav__links a.is-active, .nav__links a:hover { color: var(--white); }
+
+.hero__grid {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 48px;
+  padding: 40px 0 140px;
+}
+.hero__copy { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+.hero__copy h1 { font-weight: 800; font-size: clamp(44px, 6vw, 72px); line-height: 1.02; letter-spacing: -2px; }
+.hero__copy p { margin: 0; font-size: 18px; line-height: 1.65; color: var(--muted-dark); max-width: 480px; }
+
+/* Palco do prato recortado */
+.hero__stage { flex: 1 1 440px; min-width: 0; position: relative; height: 460px; }
+.hero__plate-anchor { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.hero__plate {
+  position: absolute; left: 0; top: 0;
+  width: min(460px, 86vw); height: auto;
+  /* inclinação 3D + rotação diagonal; o translate puxa o prato para baixo, cruzando a pincelada */
+  transform: translate(-50%, -38%) perspective(1400px) rotateX(14deg) rotate(58deg);
+  filter: drop-shadow(0 46px 38px rgba(0,0,0,0.75)) drop-shadow(0 10px 12px rgba(0,0,0,0.5));
+}
+.hero__float {
+  position: absolute; left: 2%; bottom: -150px; z-index: 3;
+  width: 132px; height: auto;
+  filter: drop-shadow(0 26px 22px rgba(0,0,0,0.45));
+}
+
+.hero__brush {
+  position: absolute; left: 0; bottom: -1px;
+  width: 100%; height: 90px; display: block;
+}
+
+/* Flutuação suave */
+@keyframes floatA { 0%,100% { transform: translateY(0) rotate(-14deg); } 50% { transform: translateY(-14px) rotate(-10deg); } }
+@keyframes floatB { 0%,100% { transform: translateY(0) rotate(-7deg); }  50% { transform: translateY(-16px) rotate(-4deg); } }
+.float-a { animation: floatA 6s ease-in-out infinite; }
+.float-b { animation: floatB 7s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .float-a, .float-b { animation: none; } }
+
+/* ---------- Seções gerais ---------- */
+.section-head {
+  text-align: center; display: flex; flex-direction: column; align-items: center;
+  gap: 12px; margin-bottom: 44px;
+}
+.section-head h2 { font-weight: 800; font-size: 40px; letter-spacing: -1px; }
+.section-head p { margin: 0; color: var(--muted); font-size: 17px; max-width: 560px; line-height: 1.6; }
+.section-head--dark h2 { color: var(--white); }
+
+.card-row { display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch; }
+
+.card {
+  flex: 1 1 240px;
+  background: var(--white); border-radius: var(--radius); padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  box-shadow: var(--shadow-card);
+}
+.card h3 { font-size: 20px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.card__icon { color: var(--accent); }
+.card__link { margin-top: auto; font-weight: 700; font-size: 15px; color: var(--accent-text); min-height: 44px; display: inline-flex; align-items: center; }
+.card__badge {
+  width: 48px; height: 48px; border-radius: 12px; background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-text); font-family: var(--font-display); font-weight: 800; font-size: 20px;
+}
+.card__price { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--muted); }
+
+.photo-card {
+  flex: 1 1 240px; min-width: 0; height: 320px;
+  object-fit: cover; border-radius: var(--radius);
+  box-shadow: var(--shadow-photo);
+}
+.photo-card--short { height: 300px; }
+
+/* Cards "a cavalo" entre branco e escuro */
+.casa {
+  background: linear-gradient(to bottom, var(--white) 0 64%, var(--dark) 64% 100%);
+  padding: 150px 0 72px; /* espaço extra no topo para o prato que vaza do hero */
+}
+.cardapio {
+  background: linear-gradient(to bottom, var(--dark) 0 46%, var(--white) 46% 100%);
+  padding: 56px 0 80px;
+}
+
+/* ---------- Combos ---------- */
+.combos { background: var(--dark); color: var(--white); }
+.combos__inner {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 48px;
+  padding-top: 96px; padding-bottom: 140px;
+}
+.combos__copy { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.combos__copy h2 { font-weight: 800; font-size: clamp(36px, 4.4vw, 54px); line-height: 1.05; letter-spacing: -1.5px; }
+.combos__copy p { margin: 0; color: var(--muted-dark); font-size: 17px; line-height: 1.65; max-width: 460px; }
+.combos__stage {
+  flex: 1 1 380px; min-width: 0; position: relative; min-height: 420px;
+  display: flex; justify-content: center; align-items: center;
+}
+.combos__glow {
+  position: absolute; width: 380px; max-width: 90%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,64,28,0.22), rgba(232,64,28,0) 68%);
+}
+.combos__img {
+  position: relative; width: min(540px, 92vw); height: auto;
+  filter: drop-shadow(0 50px 40px rgba(0,0,0,0.8)) drop-shadow(0 12px 14px rgba(0,0,0,0.5));
+}
+
+/* ---------- Abas ---------- */
+.tabs-wrap { margin-top: -48px; position: relative; }
+.tabs {
+  background: var(--white); border-radius: var(--radius);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.14);
+  padding: 10px; display: flex; flex-wrap: wrap; gap: 8px;
+}
+.tab {
+  flex: 1 1 180px; min-height: 52px; border: 0; border-radius: 12px;
+  background: transparent; color: var(--ink); font-weight: 700; font-size: 15px; cursor: pointer;
+}
+.tab.is-active { background: var(--accent); color: var(--white); }
+.tabs__text { margin: 28px auto 0; max-width: 620px; text-align: center; color: var(--muted); font-size: 16px; line-height: 1.6; }
+
+/* ---------- Contato ---------- */
+.contato { padding-top: 80px; padding-bottom: 96px; }
+.contato__grid { display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch; }
+.contato__info {
+  flex: 2 1 520px; min-width: 0; display: flex; flex-wrap: wrap;
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-card); background: var(--white);
+}
+.contato__img { flex: 1 1 220px; min-width: 0; min-height: 320px; object-fit: cover; }
+.contato__list { flex: 1 1 260px; list-style: none; margin: 0; padding: 28px; }
+.contato__list li { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+.contato__list small { display: block; font-size: 13px; color: var(--muted); font-weight: 600; }
+.contato__list strong { font-size: 15px; }
+.contato__icon {
+  width: 36px; height: 36px; flex: none; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent-text);
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px;
+}
+
+.form {
+  flex: 1 1 340px; min-width: 0; background: var(--white); border-radius: var(--radius);
+  box-shadow: var(--shadow-card); padding: 28px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.form h3 { font-size: 22px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; font-weight: 600; }
+.form input { min-height: 46px; padding: 0 14px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px; }
+.form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.form__row { display: flex; flex-wrap: wrap; gap: 12px; }
+.form__row label { flex: 1 1 110px; }
+.form .btn-row .btn { flex: 1 1 120px; }
+
+/* ---------- Rodapé ---------- */
+.footer { background: var(--darker); color: #A9ABB0; }
+.footer__inner {
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center;
+  padding-top: 32px; padding-bottom: 32px; font-size: 14px;
+}
+.footer .logo__text { font-size: 20px; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 720px) {
+  .hero__stage { height: 380px; }
+  .hero__float { width: 96px; bottom: -110px; }
+  .casa { padding-top: 120px; }
+  .section-head h2 { font-size: 32px; }
+}

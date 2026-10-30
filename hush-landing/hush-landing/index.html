@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HUSH Sushi Bar · Culinária japonesa</title>
+  <meta name="description" content="A arte do sushi, em silêncio. Peixe selecionado todos os dias e cortado na hora, num balcão íntimo.">
+  <meta name="theme-color" content="#0F0E0D">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Unbounded:wght@700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="assets/img/uramaki-recorte-200.webp 200w, assets/img/uramaki-recorte.webp 418w"
+        imagesizes="(max-width: 720px) 62vw, 300px">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span class="topbar__open"><span class="topbar__dot" aria-hidden="true"></span>Aberto hoje · 18h às 23h30</span>
+      <span>Rua Harmonia, 512 · Vila Madalena</span>
+      <a href="#" class="topbar__ig">Instagram</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <!-- Pincelada vermelha: único elemento com overflow:hidden no hero -->
+    <div class="hero__paint" aria-hidden="true">
+      <svg viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice">
+        <path fill="#E8391A" d="M120 140 C220 60 420 80 520 150 C600 210 590 330 560 420 C530 520 580 600 500 680 C420 760 260 740 170 690 C80 640 40 540 70 440 C95 360 30 300 60 220 C75 180 90 160 120 140 Z"/>
+        <g fill="none" stroke="#E8391A" stroke-linecap="round">
+          <path d="M40 104 C120 76 200 88 252 66" stroke-width="22"/>
+          <path d="M470 758 C525 738 572 744 598 726" stroke-width="16"/>
+          <path d="M578 500 C588 540 592 580 596 626" stroke-width="12"/>
+        </g>
+        <g fill="none" stroke="#F3EFE9" stroke-linecap="round" opacity=".5">
+          <path d="M150 262 C280 232 420 242 540 282" stroke-width="3"/>
+          <path d="M112 472 C250 442 400 462 560 432" stroke-width="2"/>
+          <path d="M162 622 C280 602 380 612 500 592" stroke-width="4"/>
+        </g>
+      </svg>
+      <span class="hero__vtext">寿司ロール</span>
+    </div>
+
+    <div class="container hero__inner">
+      <nav class="nav" aria-label="Principal">
+        <a href="#" class="brand" aria-label="HUSH — início">HUSH<span class="brand__dot" aria-hidden="true"></span></a>
+        <div class="nav__links" id="nav-links">
+          <a href="#cardapio">Cardápio</a>
+          <a href="#casa">A casa</a>
+          <a href="#combinados">Combinados</a>
+          <a href="#como-pedir">Delivery</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <a href="#cardapio" class="pill pill--dark nav__cta">Pedir agora <span class="nav__arrow" aria-hidden="true">→</span><span class="cart-badge" id="cart-badge" hidden></span></a>
+        <!-- Menu sanduíche: só aparece no celular -->
+        <button type="button" class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menu">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </nav>
+
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="hero__eyebrow">Culinária japonesa / com delivery</p>
+          <p class="hero__word">HUSH<span class="hero__dot" aria-hidden="true"></span></p>
+          <h1>Sushi &amp; Rolls</h1>
+          <p class="hero__lead">Peixe fresco, cortado na hora e entregue em até 40 minutos em São Paulo.</p>
+          <div class="hero__actions">
+            <a href="#combinados" class="pill pill--red">Escolher combinado</a>
+            <a href="#cardapio" class="hero__link">Ver cardápio →</a>
+          </div>
+        </div>
+
+        <div class="hero__art">
+          <!-- A âncora fica parada; só o <img> se move com o scroll (assets/js/script.js) -->
+          <div class="sushi-anchor" id="sushi-anchor">
+            <img class="sushi-fly" id="sushi-fly"
+                 src="assets/img/uramaki-recorte.webp"
+                 srcset="assets/img/uramaki-recorte-200.webp 200w, assets/img/uramaki-recorte.webp 418w"
+                 sizes="(max-width: 720px) 62vw, 300px"
+                 width="418" height="559" fetchpriority="high" decoding="async"
+                 alt="Uramaki de salmão com gergelim tostado">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- CATEGORIAS (sobreposta ao hero) -->
+    <section class="categorias" aria-label="Categorias do cardápio">
+      <div class="container">
+        <ul class="cat-panel">
+          <li><a href="#cardapio" class="cat">
+            <span class="cat__icon"><svg aria-hidden="true" viewBox="0 0 48 48" width="54" height="54" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="4"/><path d="M14 10l1.5 2M34 10l-1.5 2M8 26h2M38 26h2"/></svg></span>
+            <span class="cat__name">Rolls</span></a></li>
+          <li><a href="#cardapio" class="cat">
+            <span class="cat__icon"><svg aria-hidden="true" viewBox="0 0 48 48" width="54" height="54" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="25" width="30" height="11" rx="5.5"/><path d="M6 25c5-9 31-9 36 0z"/><path d="M15 19l3 5M23 17.5l2 6M31 19l1 5"/></svg></span>
+            <span class="cat__name">Sushis</span></a></li>
+          <li><a href="#cardapio" class="cat">
+            <span class="cat__icon"><svg aria-hidden="true" viewBox="0 0 48 48" width="54" height="54" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 23h36a18 15 0 0 1-36 0z"/><path d="M18 40h12"/><circle cx="15" cy="18" r="3.5"/><circle cx="24" cy="15" r="3.5"/><path d="M30 20c1-4 5-5 8-3"/></svg></span>
+            <span class="cat__name">Poke</span></a></li>
+          <li><a href="#cardapio" class="cat">
+            <span class="cat__icon"><svg aria-hidden="true" viewBox="0 0 48 48" width="54" height="54" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 25h36a18 15 0 0 1-36 0z"/><path d="M18 42h12"/><path d="M27 21L41 6M31 22L45 9"/><path d="M14 9c-2 3 2 5 0 8M20 7c-2 3 2 5 0 8"/></svg></span>
+            <span class="cat__name">Lámen</span></a></li>
+          <li><a href="#cardapio" class="cat">
+            <span class="cat__icon"><svg aria-hidden="true" viewBox="0 0 48 48" width="54" height="54" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 31c3-12 31-12 34 0z"/><path d="M14 23l2 4M20 20l1 4M28 20l-1 4M34 23l-2 4"/><path d="M4 37h40"/></svg></span>
+            <span class="cat__name">Entradas</span></a></li>
+          <li><a href="#cardapio" class="cat">
+            <span class="cat__icon"><svg aria-hidden="true" viewBox="0 0 48 48" width="54" height="54" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 12h22l-3 29H16z"/><path d="M14 20h20"/><path d="M26 12l4-8h5"/></svg></span>
+            <span class="cat__name">Bebidas</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OS MAIS PEDIDOS -->
+    <section id="cardapio" class="mais-pedidos">
+      <div class="container">
+        <div class="mp__head">
+          <div>
+            <p class="mp__eyebrow">Populares do cardápio</p>
+            <h2>Os mais pedidos</h2>
+          </div>
+          <!-- Ponto de pouso do sushi do hero: não remover -->
+          <div class="mp__landing" id="sushi-landing" aria-hidden="true"></div>
+          <a href="#cardapio" class="mp__eyebrow mp__all">Todo o cardápio →</a>
+        </div>
+
+        <div class="mp__grid">
+          <article class="item">
+            <picture>
+              <source type="image/webp" srcset="assets/img/foto-uramaki-400.webp 400w, assets/img/foto-uramaki-687.webp 687w" sizes="(max-width: 520px) 100vw, 240px">
+              <img src="assets/img/foto-uramaki.jpg" width="687" height="1031" loading="lazy" decoding="async" style="object-position: 50% 62%" alt="Uramaki Filadélfia com gergelim tostado">
+            </picture>
+            <div class="item__body">
+              <h3>Uramaki Filadélfia</h3>
+              <p>Salmão, cream cheese, cebolinha, gergelim tostado</p>
+              <div class="item__foot"><span class="item__price">R$ 42,90</span><button type="button" class="add-btn" aria-label="Adicionar Uramaki Filadélfia ao pedido">+</button></div>
+            </div>
+          </article>
+          <article class="item">
+            <!-- TROCAR: foto provisória. Substituir pela foto da peça no hashi (object-position 45% 38%) -->
+            <picture>
+              <source type="image/webp" srcset="assets/img/foto-uramaki-400.webp 400w, assets/img/foto-uramaki-687.webp 687w" sizes="(max-width: 520px) 100vw, 240px">
+              <img src="assets/img/foto-uramaki.jpg" width="687" height="1031" loading="lazy" decoding="async" style="object-position: 45% 38%" alt="Roll de salmão com molho tarê">
+            </picture>
+            <div class="item__body">
+              <h3>Roll de salmão com tarê</h3>
+              <p>Salmão, cream cheese, molho tarê, cebolinha</p>
+              <div class="item__foot"><span class="item__price">R$ 46,90</span><button type="button" class="add-btn" aria-label="Adicionar Roll de salmão com tarê ao pedido">+</button></div>
+            </div>
+          </article>
+          <article class="item">
+            <picture>
+              <source type="image/webp" srcset="assets/img/foto-jo-salmao-400.webp 400w, assets/img/foto-jo-salmao-687.webp 687w" sizes="(max-width: 520px) 100vw, 240px">
+              <img src="assets/img/foto-jo-salmao.jpg" width="687" height="1031" loading="lazy" decoding="async" alt="Jô de salmão maçaricado com ovas">
+            </picture>
+            <div class="item__body">
+              <h3>Jô maçaricado</h3>
+              <p>Salmão maçaricado, ovas, maionese da casa</p>
+              <div class="item__foot"><span class="item__price">R$ 38,90</span><button type="button" class="add-btn" aria-label="Adicionar Jô maçaricado ao pedido">+</button></div>
+            </div>
+          </article>
+          <article class="item">
+            <picture>
+              <source type="image/webp" srcset="assets/img/foto-hossomaki-600.webp 600w, assets/img/foto-hossomaki-1000.webp 1000w" sizes="(max-width: 520px) 100vw, 240px">
+              <img src="assets/img/foto-hossomaki.jpg" width="1470" height="980" loading="lazy" decoding="async" style="object-position: 52% 66%" alt="Hossomaki de salmão com wasabi e gengibre">
+            </picture>
+            <div class="item__body">
+              <h3>Hossomaki de salmão</h3>
+              <p>Alga, arroz temperado, salmão fresco</p>
+              <div class="item__foot"><span class="item__price">R$ 29,90</span><button type="button" class="add-btn" aria-label="Adicionar Hossomaki de salmão ao pedido">+</button></div>
+            </div>
+          </article>
+          <article class="item">
+            <picture>
+              <source type="image/webp" srcset="assets/img/foto-travessa-600.webp 600w, assets/img/foto-travessa-1000.webp 1000w" sizes="(max-width: 520px) 100vw, 240px">
+              <img src="assets/img/foto-travessa.jpg" width="1470" height="980" loading="lazy" decoding="async" alt="Travessa de nigiris variados do chef">
+            </picture>
+            <div class="item__body">
+              <h3>Combinado Hush</h3>
+              <p>Seleção de nigiris do chef: salmão, atum, camarão e mais</p>
+              <div class="item__foot"><span class="item__price">R$ 119,90</span><button type="button" class="add-btn" aria-label="Adicionar Combinado Hush ao pedido">+</button></div>
+            </div>
+          </article>
+        </div>
+        <p class="sr-only" id="cart-status" role="status"></p>
+      </div>
+    </section>
+
+    <!-- FAIXA DE INFO -->
+    <section class="info" aria-label="Informações rápidas">
+      <div class="container">
+        <ul class="info__list">
+          <li><span class="info__kanji" aria-hidden="true">時</span><div><small>Horário</small><strong>Ter a Dom · 18h às 23h30</strong></div></li>
+          <li><span class="info__kanji" aria-hidden="true">届</span><div><small>Delivery</small><strong>WhatsApp e iFood</strong></div></li>
+          <li><span class="info__kanji" aria-hidden="true">所</span><div><small>Endereço</small><strong>Rua Harmonia, 512 · Vila Madalena</strong></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- A CASA -->
+    <section id="casa" class="casa">
+      <div class="container casa__grid">
+        <div class="collage">
+          <picture>
+            <source type="image/webp"
+                    srcset="assets/img/foto-uramaki-400.webp 400w, assets/img/foto-uramaki-687.webp 687w"
+                    sizes="(max-width: 720px) 58vw, 330px">
+            <img class="collage__a" src="assets/img/foto-uramaki.jpg" width="687" height="1031"
+                 loading="lazy" decoding="async"
+                 alt="Uramaki de salmão com gergelim tostado">
+          </picture>
+          <picture>
+            <source type="image/webp"
+                    srcset="assets/img/foto-jo-salmao-400.webp 400w, assets/img/foto-jo-salmao-687.webp 687w"
+                    sizes="(max-width: 720px) 52vw, 300px">
+            <img class="collage__b" src="assets/img/foto-jo-salmao.jpg" width="687" height="1031"
+                 loading="lazy" decoding="async"
+                 alt="Jô de salmão maçaricado com ovas">
+          </picture>
+          <span class="collage__seal" aria-hidden="true">鮮</span>
+        </div>
+
+        <div class="casa__text">
+          <span class="label"><span aria-hidden="true">一</span> · A casa</span>
+          <h2>Um balcão pequeno. Atenção total a cada peça.</h2>
+          <p class="lead">O HUSH nasceu em 2019 como um balcão de oito lugares na Vila Madalena. A ideia continua a mesma: poucas pessoas por vez, peixe escolhido de manhã e um itamae que conversa com quem está na frente dele.</p>
+          <ol class="pillars">
+            <li><span class="pillars__num" aria-hidden="true">一</span><div><h3>Peixe do dia</h3><p>Salmão, atum e peixes brancos escolhidos toda manhã e cortados só na hora do pedido.</p></div></li>
+            <li><span class="pillars__num" aria-hidden="true">二</span><div><h3>Itamae no balcão</h3><p>Sente-se no balcão e acompanhe o chef montando cada peça na sua frente.</p></div></li>
+            <li><span class="pillars__num" aria-hidden="true">三</span><div><h3>Feito na hora</h3><p>Nada fica pronto esperando: arroz temperado na casa e peças montadas a cada pedido.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMBINADOS -->
+    <section id="combinados" class="combinados">
+      <!-- Decoração recortada aqui dentro; o hossomaki fica fora, sem overflow:hidden -->
+      <div class="combinados__deco" aria-hidden="true">
+        <svg class="seigaiha seigaiha--red">
+          <defs>
+            <pattern id="sg-red" width="80" height="40" patternUnits="userSpaceOnUse">
+              <g fill="#B8240F" stroke="#5E0F04" stroke-width="1.4">
+                <g transform="translate(0 20)"><circle r="36"/><circle r="26"/><circle r="16"/></g>
+                <g transform="translate(80 20)"><circle r="36"/><circle r="26"/><circle r="16"/></g>
+                <g transform="translate(40 40)"><circle r="36"/><circle r="26"/><circle r="16"/></g>
+              </g>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#sg-red)"/>
+        </svg>
+        <span class="combinados__kanji">組</span>
+      </div>
+
+      <div class="container combinados__inner">
+        <div class="combinados__copy">
+          <span class="label label--light"><span aria-hidden="true">三</span> · Combinados</span>
+          <h2>Monte o seu combinado</h2>
+          <p>Escolha as peças e a quantidade. A gente prepara na hora para você comer aqui, retirar ou receber em casa.</p>
+          <ul class="chips">
+            <li>16 a 80 peças</li>
+            <li>Retirada ou entrega</li>
+            <li>Barcas para eventos</li>
+          </ul>
+          <div><a href="#contato" class="btn btn--black" data-wa="Olá! Quero montar um combinado.">Montar pelo WhatsApp</a></div>
+        </div>
+        <div class="combinados__stage">
+          <div class="combinados__circle" aria-hidden="true"></div>
+          <img class="combinados__img float-b"
+               src="assets/img/hossomaki-recorte.webp"
+               srcset="assets/img/hossomaki-recorte-360.webp 360w, assets/img/hossomaki-recorte.webp 707w"
+               sizes="(max-width: 560px) 90vw, 500px"
+               width="707" height="467" loading="lazy" decoding="async"
+               alt="Hossomaki de salmão empilhado">
+        </div>
+      </div>
+    </section>
+
+    <!-- DO SEU JEITO -->
+    <section id="como-pedir" class="jeito">
+      <div class="container">
+        <div class="section-head">
+          <span class="label"><span aria-hidden="true">四</span> · Como pedir</span>
+          <h2>Do seu jeito</h2>
+        </div>
+        <div class="way-grid">
+          <article class="way">
+            <span class="way__kanji" aria-hidden="true">席</span>
+            <h3>No salão</h3>
+            <p>Mesas no salão e lugares no balcão do itamae. Reserve pelo formulário ou pelo WhatsApp.</p>
+            <a href="#contato" class="way__link">Reservar mesa →</a>
+          </article>
+          <article class="way">
+            <span class="way__kanji" aria-hidden="true">届</span>
+            <h3>Delivery e retirada</h3>
+            <p>Peça pelo WhatsApp ou pelo iFood. Entregamos em Pinheiros, Vila Madalena, Perdizes e região (até 6 km).</p>
+            <a href="#contato" class="way__link" data-wa="Olá! Quero fazer um pedido para entrega/retirada.">Pedir agora →</a>
+          </article>
+          <article class="way">
+            <span class="way__kanji" aria-hidden="true">宴</span>
+            <h3>Eventos</h3>
+            <p>Barcas e combinados para aniversários e reuniões. Conte a data e quantas pessoas que montamos uma proposta.</p>
+            <a href="#contato" class="way__link" data-wa="Olá! Quero um orçamento para um evento.">Pedir orçamento →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="contato">
+      <div class="container contato__grid">
+        <div class="visit">
+          <span class="visit__watermark" aria-hidden="true">静</span>
+          <span class="label label--dark"><span aria-hidden="true">五</span> · Visite</span>
+          <h2>Fale com a gente</h2>
+          <p class="visit__rating"><span aria-hidden="true">★</span> 4,8 no Google · 1.240 avaliações</p>
+          <ul class="visit__list">
+            <li><span class="visit__kanji" aria-hidden="true">所</span><div><small>Endereço</small><strong>Rua Harmonia, 512 · Vila Madalena</strong></div></li>
+            <li><span class="visit__kanji" aria-hidden="true">話</span><div><small>WhatsApp</small><strong>(11) 98765-4321</strong></div></li>
+            <li><span class="visit__kanji" aria-hidden="true">時</span><div><small>Horário</small><strong>Ter a Dom · 18h às 23h30</strong></div></li>
+            <li><span class="visit__kanji" aria-hidden="true">写</span><div><small>Instagram</small><strong>@hush.sushibar</strong></div></li>
+          </ul>
+        </div>
+
+        <form class="form" id="form-reserva" action="#" method="post">
+          <h3>Reserve sua mesa</h3>
+          <p class="form__note">Confirmamos pelo WhatsApp em até 15 minutos.</p>
+          <label>Nome<input type="text" name="nome" placeholder="Seu nome" autocomplete="name" required></label>
+          <label>WhatsApp<input type="tel" name="whatsapp" placeholder="(00) 00000-0000" autocomplete="tel" required></label>
+          <div class="form__row">
+            <label class="form__grow">Local<input type="text" name="local" placeholder="Rua, número e bairro" autocomplete="street-address" required></label>
+            <label>Pessoas<input type="number" name="pessoas" min="1" placeholder="2" required></label>
+          </div>
+          <label class="form__check"><input type="checkbox" name="balcao"> Prefiro lugar no balcão</label>
+          <button type="submit" class="btn btn--primary btn--block">Enviar pedido de reserva</button>
+          <p class="form__status" id="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="logo">
+        <span class="hanko hanko--sm" aria-hidden="true">静</span>
+        <span class="logo__name">HUSH</span>
+      </span>
+      <span>Ter a Dom · 18h às 23h30</span>
+      <span>Rua Harmonia, 512 · Vila Madalena</span>
+      <span>© <span id="ano">2026</span> HUSH Sushi Bar</span>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a href="#contato" class="wa-float" aria-label="Falar com o HUSH pelo WhatsApp" data-wa="Olá! Vim pelo site.">
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8.5 8.5 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/></svg>
+  </a>
+
+  <!-- Barra do pedido: aparece quando algo é adicionado pelo "+" do cardápio e abre o carrinho -->
+  <button type="button" class="cart-bar" id="cart-bar" aria-haspopup="dialog" hidden>
+    <span class="cart-bar__count" id="cart-bar-count">0</span>
+    <span class="cart-bar__label">Ver pedido</span>
+    <span class="cart-bar__total" id="cart-bar-total">R$ 0,00</span>
+    <span class="cart-bar__go" aria-hidden="true">→</span>
+  </button>
+
+  <!-- CARRINHO: revisar o pedido antes de enviar pelo WhatsApp -->
+  <dialog class="cart" id="cart" aria-labelledby="cart-title">
+    <div class="cart__head">
+      <h2 id="cart-title">Seu pedido</h2>
+      <button type="button" class="cart__close" id="cart-close" aria-label="Fechar carrinho">×</button>
+    </div>
+
+    <!-- Etapa 1: itens + dados de entrega -->
+    <div class="cart__view" id="cart-view-items">
+      <div class="cart__body">
+        <div class="cart__empty" id="cart-empty">
+          <p>Seu pedido está vazio.</p>
+          <a href="#cardapio" class="cart__link" id="cart-to-menu">Escolher no cardápio →</a>
+        </div>
+        <ul class="cart__list" id="cart-list"></ul>
+
+        <form class="cart__form" id="cart-form">
+          <fieldset class="cart__mode">
+            <legend>Como você quer receber?</legend>
+            <label><input type="radio" name="modo" value="entrega" checked> Entrega <small>+ R$ 7,90</small></label>
+            <label><input type="radio" name="modo" value="retirada"> Retirada <small>no balcão, grátis</small></label>
+          </fieldset>
+          <label>Nome<input type="text" name="nome" placeholder="Seu nome" autocomplete="name" required></label>
+          <label class="cart__addr" id="cart-addr">Endereço de entrega<input type="text" name="endereco" placeholder="Rua, número, bairro e complemento" autocomplete="street-address" required></label>
+          <label>Pagamento
+            <select name="pagamento">
+              <option>Pix</option>
+              <option>Cartão na entrega</option>
+              <option>Dinheiro</option>
+            </select>
+          </label>
+          <label>Observações <span class="cart__optional">(opcional)</span><textarea name="obs" rows="2" placeholder="Ex.: sem cebolinha, mandar hashi extra"></textarea></label>
+        </form>
+      </div>
+
+      <div class="cart__foot" id="cart-foot">
+        <dl class="cart__sum">
+          <div><dt>Subtotal</dt><dd id="cart-subtotal">R$ 0,00</dd></div>
+          <div id="cart-fee-row"><dt>Taxa de entrega</dt><dd id="cart-fee">R$ 7,90</dd></div>
+          <div class="cart__total"><dt>Total</dt><dd id="cart-total">R$ 0,00</dd></div>
+        </dl>
+        <button type="submit" form="cart-form" class="cart__send">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8.5 8.5 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/></svg>
+          Enviar pedido pelo WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- Etapa 2: pedido pronto (mostra a mensagem enviada) -->
+    <div class="cart__view" id="cart-view-done" hidden>
+      <div class="cart__body">
+        <p class="cart__done-title">Pedido pronto! <span aria-hidden="true">✓</span></p>
+        <p class="cart__done-text" id="cart-done-text"></p>
+        <pre class="cart__preview" id="cart-preview"></pre>
+      </div>
+      <div class="cart__foot">
+        <button type="button" class="cart__send cart__send--dark" id="cart-new">Fazer novo pedido</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
